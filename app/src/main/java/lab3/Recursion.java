@@ -12,7 +12,7 @@ public class Recursion {
    *   len(s) = 1 + len(s[1..] otherwise */
   public static int len(String s) {
     // TODO: replace true with the correct base case condition
-    if (true) {
+    if (s.isEmpty()) {
       return 0;
     }
     return 1 + len(s.substring(1));
@@ -26,7 +26,13 @@ public class Recursion {
    *        countE(s[1:] otherwise
    */
   public static int countE(String s)  {
-      return 0; // TODO
+      if(s.isEmpty()){
+          return 0;
+      } else if (s.charAt(0) == 'e') {
+	  return 1 + countE(s.substring(1));
+      } else {
+	  return 0 + countE(s.substring(1));
+      }
   }
 
 
@@ -34,7 +40,11 @@ public class Recursion {
     e.g. sum(0) = 0, sum(3) = 3
     sum(34) = 7.
     sum(1356) = 15.     6  + sum of the digits in 135
-    Precondition: n >= 0. */
+    Precondition: n >= 0.
+    recursive definition:
+      sumDigs(0) = 0
+      sumDigs(n) = n % 10 + sumDigs(n/10)
+  */
   public static int sumDigs(int n) {
       if (n == 0) {
           return 0;
@@ -42,14 +52,23 @@ public class Recursion {
       int s = n % 10;
 
       // TODO: replace 0 with the correct recursive call:
-      return s + 0;
+      return s + sumDigs(n/10);
   }
 
   /** = the reverse of s
    * e.g. reverse("alp") => "pla"
-   *      reverse("order") => "redro" */
+   *      reverse("order") => "redro"
+   * recursive definition:
+   *   reverse("") = ""
+   *   reverse(s) =
+   *         s[s.length()-1] +
+   *         reverse(s[0:s.length()-1))
+   */
   public static String reverse(String s) {
-      return ""; //TODO
+      if (s.isEmpty()){
+	  return s;
+      }
+      return s.charAt(s.length()-1) + reverse(s.substring(0, s.length()-1));
   }
 
   ////////////////////////////////////////////////
