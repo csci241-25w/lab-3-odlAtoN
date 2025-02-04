@@ -63,8 +63,6 @@ public class Recursion {
    *   reverse(s) =
    *         s[s.length()-1] +
    *         reverse(s[0:s.length()-1))
-
-
    */
   public static String reverse(String s) {
       if (s.isEmpty()){
